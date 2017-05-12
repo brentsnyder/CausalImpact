@@ -119,8 +119,8 @@ CreateImpactPlot <- function(impact, metrics = c("original", "pointwise",
   }
 
   # Add prediction intervals
-  q <- q + geom_ribbon(aes(ymin = lower, ymax = upper),
-                       data, fill = "SlateGray2")
+  #q <- q + geom_ribbon(aes(ymin = lower, ymax = upper),
+  #                     data, fill = "SlateGray2")
 
   # Add pre-period markers
   xintercept <- CreatePeriodMarkers(impact$model$pre.period,
@@ -135,10 +135,10 @@ CreateImpactPlot <- function(impact, metrics = c("original", "pointwise",
 
   # Add point predictions
   q <- q + geom_line(aes(y = mean), data,
-                     size = 0.6, colour = "darkblue", linetype = "dashed")
+                     size = 0.6, colour = "red", linetype = "solid")
 
   # Add observed data
-  q <- q + geom_line(aes(y = response), size = 0.6)
+  q <- q + geom_line(aes(y = response), size = 0.6, colour="blue")
   return(q)
 }
 

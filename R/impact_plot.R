@@ -126,6 +126,10 @@ CreateImpactPlot <- function(impact, metrics = c("original", "pointwise",
   xintercept <- CreatePeriodMarkers(impact$model$pre.period,
                                     impact$model$post.period,
                                     range(data$t))
+                    
+  q <- q + geom_rect(xmin = impact$model$post.period[1], xmax = impact$model$post.period[2],
+                     ymin = -Inf, ymax = Inf, fill = "grey")
+                    
   q <- q + geom_vline(xintercept = xintercept,
                       colour = "darkgrey", size = 0.8, linetype = "dashed")
 
